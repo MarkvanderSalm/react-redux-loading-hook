@@ -1,0 +1,35 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  position: absolute;
+  top: 20vh;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: calc(50vh - 150px);
+}
+
+.card {
+  align-items: center;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  margin: 10px;
+  padding: 20px 5px;
+  position: relative;
+  text-align: center;
+  width: 200px;
+}
+
+.card :first-child {
+  margin-bottom: 20px;
+}
