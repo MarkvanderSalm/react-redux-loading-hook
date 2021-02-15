@@ -20,7 +20,7 @@ export class LoadingModule {
       actionTriplets.forEach((at) => {
         if (at[2] === undefined)
           throw new Error(
-            "When no default error action is specified, each ActionTriplet must have its own error action." //TODO: improve error message
+            "When no default error action is specified, each ActionTriplet must have its own error action."
           );
       });
       this.actionTriplets = actionTriplets as InternalActionTriplet[];

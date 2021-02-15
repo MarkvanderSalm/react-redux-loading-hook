@@ -4,6 +4,8 @@ export type InternalActionTriplet = [
   error: string
 ];
 
-export interface ActionTriplet extends Omit<InternalActionTriplet, "error"> {
-  error?: string;
-}
+export type ActionTriplet = [
+  start: string,
+  finish: string,
+  error?: string
+]

@@ -6,6 +6,7 @@
   "files": [
     "dist"
   ],
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/MarkvanderSalm/react-redux-loading-hook",
   "author": "Mark van der Salm <mark.van.der.salm@gmail.com>",
   "license": "MIT",
@@ -27,7 +28,6 @@
     "react-redux": "^7.2.2"
   },
   "scripts": {
-    "build-babel": "tsc && npx babel src --out-dir dist --extensions .ts,.tsx --source-maps inline",
-    "build-rollup": "rollup -c"
+    "build": "rollup -c"
   }
 }
