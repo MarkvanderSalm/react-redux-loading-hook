@@ -28,6 +28,6 @@
     "react-redux": "^7.2.2"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c -w"
   }
 }
