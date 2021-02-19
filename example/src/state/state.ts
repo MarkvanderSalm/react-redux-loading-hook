@@ -7,8 +7,8 @@ import { RootState } from "./store";
 type Post = { userId: number; id: number; title: string; body: string };
 
 type State = {
-  data: Post;
-  error: {
+  data?: Post;
+  error?: {
     message: string;
     status: number;
   };
@@ -59,7 +59,7 @@ export const fetchPostEpic: Epic = (action$) =>
     mergeMap(() => {
       const id = Math.floor(Math.random() * 100);
       return ajax
-        .getJSON(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        .getJSON<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`)
         .pipe(map(fetchPostSuccessCreator));
     })
   );

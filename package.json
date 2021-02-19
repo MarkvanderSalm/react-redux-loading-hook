@@ -21,7 +21,8 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts,.tsx --max-warnings 0 example/src react-redux-loading-hook/src",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "example": "yarn --cwd example dev"
   },
   "husky": {
     "hooks": {
@@ -29,6 +30,9 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": ["prettier --write", "yarn lint"]
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "yarn lint"
+    ]
   }
 }
