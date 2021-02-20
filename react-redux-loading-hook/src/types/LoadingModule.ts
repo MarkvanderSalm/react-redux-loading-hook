@@ -31,4 +31,16 @@ export class LoadingModule {
 
   name: string;
   actionTriplets: InternalActionTriplet[];
+
+  get data(): LoadingModuleData {
+    return {
+      name: this.name,
+      actionTriplets: this.actionTriplets,
+    };
+  }
 }
+
+export type LoadingModuleData = {
+  name: string;
+  actionTriplets: InternalActionTriplet[];
+};

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LoadingModule } from "./types";
+import { LoadingModuleData } from "./types";
 
 export type LoadingState = {
   registeredLoadingModules: string[];
@@ -30,7 +30,10 @@ const loadingModulesSlice = createSlice({
       });
       return state;
     },
-    registerLoadingModule: (state, action: PayloadAction<LoadingModule>) => {
+    registerLoadingModule: (
+      state,
+      action: PayloadAction<LoadingModuleData>
+    ) => {
       state.registeredLoadingModules = [
         ...new Set(state.registeredLoadingModules.concat(action.payload.name)),
       ];

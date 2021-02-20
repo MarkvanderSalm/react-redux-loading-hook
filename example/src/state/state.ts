@@ -5,13 +5,11 @@ import { catchError, delay, filter, map, mergeMap } from "rxjs/operators";
 import { RootState } from "./store";
 
 type Post = { userId: number; id: number; title: string; body: string };
+type Error = { message: string; status: number };
 
 type State = {
   data?: Post;
-  error?: {
-    message: string;
-    status: number;
-  };
+  error?: Error;
 };
 
 const initialState: State = {
@@ -31,7 +29,7 @@ const slice = createSlice({
       state.error = undefined;
       return state;
     },
-    fetchNonExistentError: (state, action: PayloadAction<AjaxError>) => {
+    fetchNonExistentError: (state, action: PayloadAction<Error>) => {
       state.error = action.payload;
       return state;
     },
@@ -73,7 +71,12 @@ export const fetchNonExistentEpic: Epic = (action$) =>
         .getJSON("https://jsonplaceholder.typicode.com/posts/123456789")
         .pipe(
           catchError((e: AjaxError) => {
-            return [fetchNonExistentErrorCreator(e)];
+            return [
+              fetchNonExistentErrorCreator({
+                message: e.message,
+                status: e.status,
+              }),
+            ];
           })
         );
     })

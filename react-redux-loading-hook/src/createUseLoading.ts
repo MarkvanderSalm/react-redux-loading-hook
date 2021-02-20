@@ -18,7 +18,7 @@ export const createUseLoading = (
       loadingState.registeredLoadingModules.find((lm) => lm === module.name) ===
         undefined
     ) {
-      dispatch(registerLoadingModuleCreator(module));
+      dispatch(registerLoadingModuleCreator(module.data));
       setHasRegistered(true);
     }
 

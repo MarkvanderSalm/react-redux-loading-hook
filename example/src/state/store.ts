@@ -1,4 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
 import {
   createLoadingMiddleware,
   loadingStateReducer,
@@ -22,7 +26,7 @@ const epicMiddleware = createEpicMiddleware();
 const createStore = () => {
   const store = configureStore({
     reducer: rootReducer,
-    middleware: [epicMiddleware, loadingMiddleware],
+    middleware: [...getDefaultMiddleware(), epicMiddleware, loadingMiddleware],
   });
 
   epicMiddleware.run(rootEpic);
