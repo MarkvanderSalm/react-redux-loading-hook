@@ -86,7 +86,7 @@ Now when the Redux action of `type` `startAction` is dispatched, the `useLoading
 
 ## Options
 
-### Default error actions
+### Default error actions per instance
 
 Loading modules can be created with a default error action. This is useful when you want to handle multiple error cases by dispatching the same Redux action. To do this, set the `defaultErrorAction` property on the config object passed into the loading module's constructor and omit the third element (the error action) in your action triplets:
 
@@ -102,6 +102,18 @@ const loadingModule = new LoadingModule({
 ```
 
 Note that it's possible to use both explicitly set error actions and a default error action in one loading module. Explicitly set error actions take precendence over the default error action, so you can, for example, use the default for all but one action triplet, should you want to.
+
+### Global default error action
+
+Alternatively, you can also set a default error action for all loading modules in one go. Import the `LoadingModule` object and set its `defaultErrorAction` static property. The type you set here will be used if you set neither an explicit error action or a default error action during instance creation.
+
+```js
+import { LoadingModule } from "react-redux-loading-hook";
+
+LoadingModule.defaultErrorAction = "errorAction";
+```
+
+Note that if you wish any newly created loading module objects to use the global default error action, you must ensure that the code that sets the static property runs before the `LoadingModule` instances are created!
 
 ## Motivation
 

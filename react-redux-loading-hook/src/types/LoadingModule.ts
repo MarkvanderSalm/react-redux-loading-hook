@@ -1,6 +1,8 @@
 import { InternalActionTriplet, ActionTriplet } from "./ActionTriplet";
 
 export class LoadingModule {
+  public static defaultErrorAction: string;
+
   constructor(config: {
     name: string;
     actionTriplets: ActionTriplet[];
@@ -8,23 +10,17 @@ export class LoadingModule {
   }) {
     const { name, actionTriplets, defaultErrorAction } = config;
 
-    if (defaultErrorAction) {
-      this.actionTriplets = actionTriplets.map(
-        (at): InternalActionTriplet => [
-          at[0],
-          at[1],
-          at[2] ?? defaultErrorAction,
-        ]
-      );
-    } else {
-      actionTriplets.forEach((at) => {
-        if (at[2] === undefined)
+    this.actionTriplets = actionTriplets.map(
+      (at): InternalActionTriplet => {
+        let errorAction =
+          at[2] ?? defaultErrorAction ?? LoadingModule.defaultErrorAction;
+        if (errorAction === undefined)
           throw new Error(
-            "When no default error action is specified, each ActionTriplet must have its own error action."
+            "No error action specified. Set an error action on the ActionTriplet, set a default error action during creation of the LoadingModule instance, or use a global default error action by setting the LoadingModule.defaultErrorAction static property."
           );
-      });
-      this.actionTriplets = actionTriplets as InternalActionTriplet[];
-    }
+        return [at[0], at[1], errorAction];
+      }
+    );
 
     this.name = name;
   }
