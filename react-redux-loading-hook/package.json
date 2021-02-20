@@ -10,9 +10,6 @@
   "repository": "https://github.com/MarkvanderSalm/react-redux-loading-hook",
   "author": "Mark van der Salm <mark.van.der.salm@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.5.0"
-  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
@@ -26,7 +23,8 @@
   },
   "peerDependencies": {
     "react": "^17.0.1",
-    "react-redux": "^7.2.2"
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "build": "rollup -c",

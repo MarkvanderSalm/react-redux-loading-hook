@@ -1,12 +1,11 @@
-import { RootStateOrAny } from "react-redux";
-import { AnyAction, Middleware } from "@reduxjs/toolkit";
-import { LoadingState, setIsLoadingCreator } from "./state";
+import { AnyAction, Middleware } from "redux";
+import { LoadingState, setLoadingStateCreator } from "./state";
 import { GetLoadingStateSelector } from "./types/GetLoadingStateSelector";
 
 export const createLoadingMiddleware = (selector: GetLoadingStateSelector) => {
-  const loadingMiddleware: Middleware<{}, RootStateOrAny> = (store) => (
-    next
-  ) => (action: AnyAction) => {
+  const loadingMiddleware: Middleware = (store) => (next) => (
+    action: AnyAction
+  ) => {
     const loadingState: LoadingState = selector(store.getState());
 
     const isStart =
@@ -27,31 +26,22 @@ export const createLoadingMiddleware = (selector: GetLoadingStateSelector) => {
 
     if (isStart) {
       const startActionNames = allActionTripletNames.filter(
-        (atn) => atn.split("-")[0] === action.type
+        (atn) => atn.split(":")[0] === action.type
       );
 
-      store.dispatch(
-        setIsLoadingCreator({ actionNames: startActionNames, isLoading: true })
-      );
+      store.dispatch(setLoadingStateCreator(startActionNames, true));
     } else if (isFinish) {
       const finishActionNames = allActionTripletNames.filter(
-        (atn) => atn.split("-")[1] === action.type
+        (atn) => atn.split(":")[1] === action.type
       );
 
-      store.dispatch(
-        setIsLoadingCreator({
-          actionNames: finishActionNames,
-          isLoading: false,
-        })
-      );
+      store.dispatch(setLoadingStateCreator(finishActionNames, false));
     } else if (isError) {
       const errorActionNames = allActionTripletNames.filter(
-        (atn) => atn.split("-")[2] === action.type
+        (atn) => atn.split(":")[2] === action.type
       );
 
-      store.dispatch(
-        setIsLoadingCreator({ actionNames: errorActionNames, isLoading: false })
-      );
+      store.dispatch(setLoadingStateCreator(errorActionNames, false));
     }
 
     return next(action);

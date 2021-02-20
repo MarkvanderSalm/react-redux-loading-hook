@@ -105,7 +105,7 @@ Note that it's possible to use both explicitly set error actions and a default e
 
 ### Global default error action
 
-Alternatively, you can also set a default error action for all loading modules in one go. Import the `LoadingModule` object and set its `defaultErrorAction` static property. The type you set here will be used if you set neither an explicit error action or a default error action during instance creation.
+Alternatively, you can also set a default error action for all loading modules in one go. Import the `LoadingModule` object and set its `defaultErrorAction` static property. The type you set here will be used if you set neither an explicit error action nor a default error action during instance creation.
 
 ```js
 import { LoadingModule } from "react-redux-loading-hook";
@@ -113,7 +113,7 @@ import { LoadingModule } from "react-redux-loading-hook";
 LoadingModule.defaultErrorAction = "errorAction";
 ```
 
-Note that if you wish any newly created loading module objects to use the global default error action, you must ensure that the code that sets the static property runs before the `LoadingModule` instances are created!
+Note that you must ensure that the code that sets the static property runs before the `LoadingModule` instances are created!
 
 ## Motivation
 

@@ -23,7 +23,7 @@ export const createUseLoading = (
     }
 
     for (const at of module.actionTriplets) {
-      const name = `${at[0]}-${at[1]}-${at[2]}`;
+      const name = `${at[0]}:${at[1]}:${at[2]}`;
       if (loadingState.actionTriplets[name] === true) return true;
     }
 
