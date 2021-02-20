@@ -2,11 +2,11 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "dist",
+    "declarationDir": ".build/tsc",
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
-    "outDir": "dist",
+    "outDir": ".build/tsc",
     "skipLibCheck": true,
     "strict": true,
     "target": "ES5",
