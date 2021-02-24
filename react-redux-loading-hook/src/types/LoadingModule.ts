@@ -1,7 +1,7 @@
 import { InternalActionTriplet, ActionTriplet } from "./ActionTriplet";
 
 export class LoadingModule {
-  public static defaultErrorAction: string;
+  public static defaultErrorAction?: string;
 
   constructor(config: {
     name: string;
@@ -9,6 +9,9 @@ export class LoadingModule {
     defaultErrorAction?: string;
   }) {
     const { name, actionTriplets, defaultErrorAction } = config;
+
+    if (name.length === 0)
+      throw new Error("LoadingModule name cannot be an empty string.");
 
     this.actionTriplets = actionTriplets.map(
       (at): InternalActionTriplet => {

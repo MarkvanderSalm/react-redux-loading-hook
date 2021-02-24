@@ -117,7 +117,7 @@ Note that you must ensure that the code that sets the static property runs befor
 
 ## Motivation
 
-It's a lot of work to manually set and retrieve loading state all over an application, so I wanted to make this easier. I preferred having more of a reactive approach, so I decided I'd design it in such a way that you can just say "give me the loading state for this action" and have the library figure out the rest.
+It's a lot of work to manually set and retrieve loading state all over an application, so I wanted to make this easier. I preferred having more of a declarative approach, so I decided I'd design it in such a way that you can just say "give me the loading state for this action" and have the library figure out the rest.
 
 Because almost any web application needs to track loading state for improving the user experience, I decided to make an NPM package so I can easily reuse the system in other React + Redux applications.
 
@@ -128,3 +128,7 @@ If you're calling the same end-points from multiple places in your application, 
 ## TypeScript
 
 This package supports TypeScript. It was written in TypeScript and its types come bundled with it.
+
+## License
+
+[MIT](../LICENSE)
