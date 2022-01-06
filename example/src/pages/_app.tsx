@@ -1,4 +1,4 @@
-import { AppProps } from "next/dist/next-server/lib/router/router";
+import { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../state/store";
 import "../styles/globals.css";
