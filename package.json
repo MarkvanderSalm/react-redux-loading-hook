@@ -5,29 +5,24 @@
     "example"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.6.0",
-    "eslint-config-react-app": "^7.0.0",
-    "eslint-plugin-flowtype": "^8.0.3",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "4",
-    "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1"
+    "eslint": "^8.27.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
   },
   "scripts": {
     "lint": "eslint --ext .ts,.tsx --max-warnings 0 example/src react-redux-loading-hook/src",
     "format": "prettier --write .",
-    "example": "yarn --cwd example dev"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "example": "yarn --cwd example dev",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
