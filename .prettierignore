@@ -4,4 +4,6 @@ node_modules
 .next
 
 # react-redux-loading-hook
+.build
+coverage
 dist

@@ -31,6 +31,6 @@ module.exports = [
   {
     input: ".build/tsc/index.d.ts",
     output: [{ file: ".build/dist/index.d.ts", format: "es" }],
-    plugins: [dts()],
+    plugins: [dts.default()],
   },
 ];
